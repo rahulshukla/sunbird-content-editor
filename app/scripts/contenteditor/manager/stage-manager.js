@@ -245,7 +245,6 @@ org.ekstep.contenteditor.stageManager = new (Class.extend({
 		this.setNavigationalParams()
 		var mediaMap = {}
 		var plugin_arr = []
-        // var questionData = []
 		instance.summary = []
 		instance.assets = []
 		instance.pragma = null
@@ -256,7 +255,6 @@ org.ekstep.contenteditor.stageManager = new (Class.extend({
 			var stageAssets = []
 			plugin_arr.push({ identifier: stage.manifest.id, semanticVersion: stage.manifest.ver})
 			_.forEach(stage.children, function (plugin) {
-                // questionData.push(plugin._questions)
 				var id = plugin.getManifestId()
 				plugin_arr.push({ identifier: plugin.manifest.id, semanticVersion: plugin.manifest.ver});
 				if (_.isUndefined(stageBody[id])) stageBody[id] = []
@@ -283,10 +281,7 @@ org.ekstep.contenteditor.stageManager = new (Class.extend({
 		/* istanbul ignore else  */
 		if (this._isAssessment()) {
 			content = this._appendPluginStage(content, this.summaryTemplate);
-		} 
-        /* return true if math Method is used else return false */
-        // content = this._checkForMathText(questionData,content)
-        // content = plugin._checkForMathText(questionData,content)
+		}
 		ecEditor._.each(content.theme['plugin-manifest'].plugin, function (p){
 			plugin_arr.push({ identifier: p.id, semanticVersion: p.ver})
         })
@@ -302,6 +297,7 @@ org.ekstep.contenteditor.stageManager = new (Class.extend({
 		if (!_.isEmpty(org.ekstep.contenteditor.migration.patch)) {
 			content.theme['patch'] = org.ekstep.contenteditor.migration.patch.toString()
 		}
+		
         // check for math use
         _.forEach(this.stages, function(stage,index){
             _.forEach(stage.children, function(plugin){

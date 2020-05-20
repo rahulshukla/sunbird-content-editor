@@ -249,11 +249,6 @@ org.ekstep.contenteditor.stageManager = new (Class.extend({
 		instance.summary = []
 		instance.assets = []
 		instance.pragma = null
-		_.forEach(this.stages, function (stage, index) {
-            _.forEach(stage.children, function(plugin){
-                content = plugin._checkForMathText(content,plugin._questions)
-            }); 
-         });
         _.forEach(this.stages, function (stage, index) {
 			instance.thumbnails[stage.id] = stage.thumbnail
 			var stageBody = stage.toECML()
